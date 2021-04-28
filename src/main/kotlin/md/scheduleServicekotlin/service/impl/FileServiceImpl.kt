@@ -3,7 +3,7 @@ package md.scheduleServicekotlin.service.impl
 import md.scheduleServicekotlin.service.FileService
 import java.util.*
 import org.apache.logging.log4j.LogManager
-import org.slf4j.LoggerFactory
+import org.slf4j.*
 import org.springframework.stereotype.Service
 import java.io.File
 import java.lang.Exception
@@ -12,7 +12,7 @@ class FileServiceImpl : FileService {
     private val properties: Properties = Properties()
     var pathFile: String? = null;
     private val logger = LogManager.getLogger(FileServiceImpl::class.java)
-    var log = LoggerFactory.getLogger(FileServiceImpl::class.java);
+    private val log = LoggerFactory.getLogger(this.javaClass)
     init {
         logger.info("start init");
         val props  = javaClass.classLoader.getResourceAsStream("application.properties").use {
@@ -34,7 +34,8 @@ class FileServiceImpl : FileService {
         }
         catch (e:Exception)
         {
-            logger.error("Exception "+e)
+            logger.error("Exception "+e);
+            log.error("Exception "+e);
             println(e)
         }
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
