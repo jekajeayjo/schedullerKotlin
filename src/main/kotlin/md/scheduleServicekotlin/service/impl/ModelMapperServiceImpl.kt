@@ -6,6 +6,7 @@ import md.scheduleServicekotlin.dto.PaymentDto
 import md.scheduleServicekotlin.entity.PaymentEntity
 import md.scheduleServicekotlin.service.ModelMapperService
 import org.apache.logging.log4j.LogManager
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
 import java.time.Instant
@@ -15,7 +16,7 @@ import java.util.*
 
 @Service
 class ModelMapperServiceImpl : ModelMapperService {
-    private val logger = LogManager.getLogger(ModelMapperServiceImpl::class.java)
+    private val logger = LoggerFactory.getLogger(this.javaClass)
     override fun decodeBase64(encodeString: String): String {
         val decodedBytes = Base64.getDecoder().decode(encodeString)
         return String(decodedBytes)

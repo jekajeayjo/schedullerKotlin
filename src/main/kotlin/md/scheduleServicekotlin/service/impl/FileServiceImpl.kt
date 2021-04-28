@@ -14,7 +14,7 @@ class FileServiceImpl : FileService {
     private val logger = LogManager.getLogger(FileServiceImpl::class.java)
     private val log = LoggerFactory.getLogger(this.javaClass)
     init {
-        logger.info("start init");
+        log.debug("Start init debug")
         val props  = javaClass.classLoader.getResourceAsStream("application.properties").use {
             Properties().apply { load(it) }
         }
@@ -24,10 +24,7 @@ class FileServiceImpl : FileService {
      override fun readDataFromFile(fileName: String?): String
             = File(fileName).readText(Charsets.UTF_8)
     override fun readFile(): String {
-
-        log.info("start")
         log.debug("Start read data from File debug")
-        log.trace("start")
         var st=pathFile;
         try {
             return readDataFromFile(st);

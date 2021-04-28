@@ -8,6 +8,7 @@ import md.scheduleServicekotlin.service.FileService
 import md.scheduleServicekotlin.service.ModelMapperService
 import md.scheduleServicekotlin.service.ScheduleService
 import org.apache.logging.log4j.LogManager
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.scheduling.annotation.EnableScheduling
 import org.springframework.scheduling.annotation.Scheduled
@@ -20,7 +21,7 @@ import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 @EnableScheduling
 class ScheduleServiceImpl : ScheduleService {
     val gson = Gson()
-    private val logger = LogManager.getLogger(ScheduleServiceImpl::class.java)
+    private val logger = LoggerFactory.getLogger(this.javaClass)
     @Autowired
     lateinit var fileService: FileService;
     @Autowired
